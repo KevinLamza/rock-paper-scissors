@@ -7,6 +7,9 @@ let playerScore = 0;
 // declare variable computerScore
 let computerScore = 0;
 
+// declare game duration
+const totalRounds = 5;
+
 // init function getComputerChoice
 function getComputerChoice() {
     // declare variable computerChoice
@@ -88,7 +91,7 @@ function playSingleRound (playerChoice,computerChoice) {
         } else if (computerChoice === "paper") {
             winnerAnnouncement = "No Winner! Paper ties with Paper!";
         } else if (computerChoice === "scissors") {
-            winnerAnnouncement = "No lose! Scissors beats Paper!";
+            winnerAnnouncement = "You lose! Scissors beats Paper!";
             computerScore = ++computerScore;
         }
     } else if (playerChoice === "scissors") {
@@ -108,11 +111,24 @@ function playSingleRound (playerChoice,computerChoice) {
 }
 
 // init function game 
-//     for loop 5 mal
-//         getchoices
-//          "the computer chose ..."
-//         playsingleround
-//         print string for winner of current round and current score
+function game() {
+    // for loop 5 mal
+    for (let i = 0; i < totalRounds; i++) {
+        // get all the choices and play a single round
+        winnerAnnouncement = playSingleRound(getPlayerChoice(),getComputerChoice());
+
+        // print string for winner of current round and current score
+        console.log(`Round ${i+1}: ${winnerAnnouncement}`);
+        console.log(`You have ${playerScore} points and the computer has ${computerScore} points!`);
+    }
+}
 
 // game()
-// compare winning conditions
+game();
+if (playerScore > computerScore) {
+    console.log("You won the game!")
+} else if (playerScore < computerScore) {
+    console.log("You lost the game!")
+} else if (playerScore === computerScore) {
+    console.log("Well look at that, it's a tie!")
+}
