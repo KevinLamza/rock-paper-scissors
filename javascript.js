@@ -19,16 +19,19 @@ function getComputerChoice() {
     // assign a string of rock paper scissors to computerChoice
     if (computerChoice === 0) {
         computerChoice = "rock";
+        console.log("The computer chose Rock!");
     } else if (computerChoice === 1) {
         computerChoice = "paper";
+        console.log("The computer chose Paper!");
     } else if (computerChoice === 2) {
         computerChoice = "scissors";
+        console.log("The computer chose Scissors!");
     } else {
         computerChoice = null;
+        console.log("Something went wrong!");
     }
 
     // return computerChoice
-    console.log("The computer chose " + computerChoice + "!");
     return computerChoice;
 }
 
@@ -46,7 +49,13 @@ function getPlayerChoice() {
 
     // return playerChoice
     if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
-        console.log("You chose " + playerChoice) + "!";
+        if (playerChoice === "rock") {
+            console.log("You chose Rock!");
+        } else if (playerChoice === "paper") {
+            console.log("You chose Paper!");
+        } else if (playerChoice === "scissors") {
+            console.log("You chose Scissors!");
+        }
         return playerChoice;
     } else {
         alert("You must enter 'Rock', 'Paper' or 'Scissors'");
