@@ -32,11 +32,22 @@ function getComputerChoice() {
 }
 
 // init function getPlayerChoice
-//     declare variable for playerChoice
-//     ask player for choice
-//     assign value to playerChoice
-//     change string into lowercase only
-//     return playerChoice
+function getPlayerChoice() {
+    // declare variable for playerChoice
+    let playerChoice;
+    // ask player for choice
+    // assign string to playerChoice
+    playerChoice = prompt("Please enter Rock, Paper or Scissors:", "Rock");
+    // change string into lowercase only
+    playerChoice = playerChoice.toLowerCase();
+    // return playerChoice
+    if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
+        return playerChoice;
+    } else {
+        alert("You must enter 'Rock', 'Paper' or 'Scissors'");
+        return null;
+    }
+    }
 
 // init function singleRound (computerChoice, playerChoice)
 //     variable to save winningannouncement
