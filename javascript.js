@@ -17,16 +17,16 @@ function getComputerChoice() {
     computerChoice = Math.floor(Math.random() * 3);
 
     // assign a string of rock paper scissors to computerChoice
-    if computerChoice === 0 {
+    if (computerChoice === 0) {
         computerChoice = "rock";
-    } else if computerChoice === 1 {
+    } else if (computerChoice === 1) {
         computerChoice = "paper";
-    } else if computerChoice === 2 {
+    } else if (computerChoice === 2) {
         computerChoice = "scissors";
     } else {
         computerChoice = null;
     }
-    
+
     // return computerChoice
     return computerChoice;
 }
