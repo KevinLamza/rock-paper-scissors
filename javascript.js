@@ -110,18 +110,18 @@ function playSingleRound (playerChoice,computerChoice) {
         return winnerAnnouncement;
 }
 
-// init function game 
-function game() {
-    // for loop 5 mal
-    for (let i = 0; i < totalRounds; i++) {
-        // get all the choices and play a single round
-        winnerAnnouncement = playSingleRound(getPlayerChoice(),getComputerChoice());
+// // init function game 
+// function game() {
+//     // for loop 5 mal
+//     for (let i = 0; i < totalRounds; i++) {
+//         // get all the choices and play a single round
+//         winnerAnnouncement = playSingleRound(getPlayerChoice(),getComputerChoice());
 
-        // print string for winner of current round and current score
-        console.log(`Round ${i+1}: ${winnerAnnouncement}`);
-        console.log(`You have ${playerScore} points and the computer has ${computerScore} points!`);
-    }
-}
+//         // print string for winner of current round and current score
+//         console.log(`Round ${i+1}: ${winnerAnnouncement}`);
+//         console.log(`You have ${playerScore} points and the computer has ${computerScore} points!`);
+//     }
+// }
 
 // game()
 game();
