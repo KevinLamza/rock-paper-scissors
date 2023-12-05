@@ -1,3 +1,18 @@
+// 1 remove logic that plays exactly five rounds
+// 2 add event listener to the buttons, that call playRound 
+// with correct playerSelection
+// 3 add a div to display the results and change console logs 
+// into DOM methods
+// 4 display running score and announce winner once one player 
+// reaches 5 points
+
+// PSEUDOCODE FOR UI CHANGES
+// 1 remove for loop in game() 
+// comment announcements after ()
+// 2 add eventListener for button click
+// 3 create divs and add them as nodes without variable text
+
+
 
 // ROCK PAPER SCISSORS
 
@@ -9,6 +24,9 @@ let computerScore = 0;
 
 // declare game duration
 const totalRounds = 5;
+
+// declare current round
+let currentRound = 1;
 
 // init function getComputerChoice
 function getComputerChoice() {
@@ -39,16 +57,16 @@ function getComputerChoice() {
 }
 
 // init function getPlayerChoice
-function getPlayerChoice() {
-    // declare variable for playerChoice
-    let playerChoice;
+function getPlayerChoice(playerChoice) {
+    // // declare variable for playerChoice
+    // let playerChoice;
 
-    // ask player for choice
-    // assign string to playerChoice
-    playerChoice = prompt("Please enter Rock, Paper or Scissors:", "Rock");
+    // // ask player for choice
+    // // assign string to playerChoice
+    // playerChoice = prompt("Please enter Rock, Paper or Scissors:", "Rock");
 
-    // change string into lowercase only
-    playerChoice = playerChoice.toLowerCase();
+    // // change string into lowercase only
+    // playerChoice = playerChoice.toLowerCase();
 
     // return playerChoice
     if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
@@ -123,12 +141,30 @@ function playSingleRound (playerChoice,computerChoice) {
 //     }
 // }
 
-// game()
-game();
-if (playerScore > computerScore) {
-    console.log("You won the game!")
-} else if (playerScore < computerScore) {
-    console.log("You lost the game!")
-} else if (playerScore === computerScore) {
-    console.log("Well look at that, it's a tie!")
-}
+// // game()
+// game();
+// if (playerScore > computerScore) {
+//     console.log("You won the game!")
+// } else if (playerScore < computerScore) {
+//     console.log("You lost the game!")
+// } else if (playerScore === computerScore) {
+//     console.log("Well look at that, it's a tie!")
+// }
+
+const btnRock = document.querySelector('#btn-rock');
+btnRock.addEventListener('click', () => {
+    winnerAnnouncement = playSingleRound(getPlayerChoice('rock'),getComputerChoice());
+    console.log(winnerAnnouncement);
+})
+
+const btnPaper = document.querySelector('#btn-paper');
+btnPaper.addEventListener('click', () => {
+    winnerAnnouncement = playSingleRound(getPlayerChoice('paper'),getComputerChoice());
+    console.log(winnerAnnouncement);
+})
+
+const btnScissors = document.querySelector('#btn-scissors');
+btnScissors.addEventListener('click', () => {
+    winnerAnnouncement = playSingleRound(getPlayerChoice('scissors'),getComputerChoice());
+    console.log(winnerAnnouncement);
+})
