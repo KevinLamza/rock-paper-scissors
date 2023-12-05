@@ -1,10 +1,3 @@
-// UI changes to make it look nicer
-// added margins between the different lines
-// add color to winning announcements
-// add bold letters
-// add colorcoding for buttons and for rock paper scissor as words
-// make buttons a bit fancier, bigger
-
 // if click button when game is over, it restarts over 
 // add function to reset all values
 
@@ -34,15 +27,12 @@ function getComputerChoice() {
     // assign a string of rock paper scissors to computerChoice
     if (computerChoice === 0) {
         computerChoice = "rock";
-        console.log("The computer chose Rock!");
         divComputerChoice.textContent = 'The computer chose Rock!';
     } else if (computerChoice === 1) {
         computerChoice = "paper";
-        console.log("The computer chose Paper!");
         divComputerChoice.textContent = 'The computer chose Paper!';
     } else if (computerChoice === 2) {
         computerChoice = "scissors";
-        console.log("The computer chose Scissors!");
         divComputerChoice.textContent = 'The computer chose Scissors!';
     } else {
         computerChoice = null;
@@ -58,13 +48,10 @@ function getPlayerChoice(playerChoice) {
      // return playerChoice
     if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
         if (playerChoice === "rock") {
-            console.log("You chose Rock!");
             divPlayerChoice.textContent = 'You chose Rock!';
         } else if (playerChoice === "paper") {
-            console.log("You chose Paper!");
             divPlayerChoice.textContent = 'You chose Paper!';
         } else if (playerChoice === "scissors") {
-            console.log("You chose Scissors!");
             divPlayerChoice.textContent = 'You chose Scissors!';
         }
         return playerChoice;
@@ -126,16 +113,14 @@ function playSingleRound (playerChoice,computerChoice) {
         divComputerScore.textContent = `Computer score: ${computerScore}`;
 
         if (playerScore === 5 || computerScore === 5) {
-            const winner = document.createElement('div');
-            body.appendChild(winner);
             winner.textContent = winner
 
             if (playerScore > computerScore) {
-                winner.textContent = "You won the game!"
+                winner.textContent = "You have 5 points! You won the game! Choose again to start another game!"
             } else if (playerScore < computerScore) {
-                winner.textContent = "You lost the game!"
+                winner.textContent = "The computer has 5 points! You lost the game! Choose again to start another game!"
             } else if (playerScore === computerScore) {
-                winner.textContent = "Well look at that, it's a tie!"
+                winner.textContent = "Well look at that, it's a tie! Choose again to start another game!"
             }
         }
 
@@ -143,22 +128,37 @@ function playSingleRound (playerChoice,computerChoice) {
         return winnerAnnouncement;
 }
 
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    currentRound = 1;
+    divPlayerChoice.textContent = '';
+    divComputerChoice.textContent = '';
+    winner.textContent = '';
+}
+
 const btnRock = document.querySelector('#btn-rock');
 btnRock.addEventListener('click', () => {
+    if (playerScore === 5 || computerScore === 5) {
+        resetGame()
+    }
     winnerAnnouncement = playSingleRound(getPlayerChoice('rock'),getComputerChoice());
-    console.log(winnerAnnouncement);
 })
 
 const btnPaper = document.querySelector('#btn-paper');
 btnPaper.addEventListener('click', () => {
+    if (playerScore === 5 || computerScore === 5) {
+        resetGame()
+    }
     winnerAnnouncement = playSingleRound(getPlayerChoice('paper'),getComputerChoice());
-    console.log(winnerAnnouncement);
 })
 
 const btnScissors = document.querySelector('#btn-scissors');
 btnScissors.addEventListener('click', () => {
+    if (playerScore === 5 || computerScore === 5) {
+        resetGame()
+    }
     winnerAnnouncement = playSingleRound(getPlayerChoice('scissors'),getComputerChoice());
-    console.log(winnerAnnouncement);
 })
 
 // create elements to append
@@ -185,3 +185,6 @@ divPlayerChoice.textContent = '';
 divComputerChoice.textContent = '';
 divPlayerScore.textContent = 'Player score: 0';
 divComputerScore.textContent = 'Computer score: 0';
+
+const winner = document.createElement('div');
+body.appendChild(winner);
