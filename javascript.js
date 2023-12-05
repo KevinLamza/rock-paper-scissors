@@ -1,18 +1,12 @@
-// 1 remove logic that plays exactly five rounds
-// 2 add event listener to the buttons, that call playRound 
-// with correct playerSelection
-// 3 add a div to display the results and change console logs 
-// into DOM methods
-// 4 display running score and announce winner once one player 
-// reaches 5 points
+// UI changes to make it look nicer
+// added margins between the different lines
+// add color to winning announcements
+// add bold letters
+// add colorcoding for buttons and for rock paper scissor as words
+// make buttons a bit fancier, bigger
 
-// PSEUDOCODE FOR UI CHANGES
-// 1 remove for loop in game() 
-// comment announcements after ()
-// 2 add eventListener for button click
-// 3 create divs and add them as nodes without variable text
-
-
+// if click button when game is over, it restarts over 
+// add function to reset all values
 
 // ROCK PAPER SCISSORS
 
