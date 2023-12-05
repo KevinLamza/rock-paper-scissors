@@ -41,12 +41,15 @@ function getComputerChoice() {
     if (computerChoice === 0) {
         computerChoice = "rock";
         console.log("The computer chose Rock!");
+        divComputerChoice.textContent = 'The computer chose Rock!';
     } else if (computerChoice === 1) {
         computerChoice = "paper";
         console.log("The computer chose Paper!");
+        divComputerChoice.textContent = 'The computer chose Paper!';
     } else if (computerChoice === 2) {
         computerChoice = "scissors";
         console.log("The computer chose Scissors!");
+        divComputerChoice.textContent = 'The computer chose Scissors!';
     } else {
         computerChoice = null;
         console.log("Something went wrong!");
@@ -72,10 +75,13 @@ function getPlayerChoice(playerChoice) {
     if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
         if (playerChoice === "rock") {
             console.log("You chose Rock!");
+            divPlayerChoice.textContent = 'You chose Rock!';
         } else if (playerChoice === "paper") {
             console.log("You chose Paper!");
+            divPlayerChoice.textContent = 'You chose Paper!';
         } else if (playerChoice === "scissors") {
             console.log("You chose Scissors!");
+            divPlayerChoice.textContent = 'You chose Scissors!';
         }
         return playerChoice;
     } else {
@@ -124,6 +130,31 @@ function playSingleRound (playerChoice,computerChoice) {
             winnerAnnouncement = "No Winner! Scissors ties with Scissors!";
         }
     }
+        // update current round and increase
+        divCurrentRound.textContent = `Round ${currentRound}`;    
+        ++currentRound;
+
+        // update winner announcement
+        divWinnerAnnouncement.textContent = winnerAnnouncement;
+
+        // update scores
+        divPlayerScore.textContent = `Player score: ${playerScore}`;
+        divComputerScore.textContent = `Computer score: ${computerScore}`;
+
+        if (playerScore === 5 || computerScore === 5) {
+            const winner = document.createElement('div');
+            body.appendChild(winner);
+            winner.textContent = winner
+
+            if (playerScore > computerScore) {
+                winner.textContent = "You won the game!"
+            } else if (playerScore < computerScore) {
+                winner.textContent = "You lost the game!"
+            } else if (playerScore === computerScore) {
+                winner.textContent = "Well look at that, it's a tie!"
+            }
+        }
+
         // return string with winning announcement
         return winnerAnnouncement;
 }
@@ -168,3 +199,28 @@ btnScissors.addEventListener('click', () => {
     winnerAnnouncement = playSingleRound(getPlayerChoice('scissors'),getComputerChoice());
     console.log(winnerAnnouncement);
 })
+
+// create elements to append
+const divCurrentRound = document.createElement('div');
+const divPlayerChoice = document.createElement('div');
+const divComputerChoice = document.createElement('div');
+const divWinnerAnnouncement = document.createElement('div');
+const divPlayerScore = document.createElement('div');
+const divComputerScore = document.createElement('div');
+
+const body = document.querySelector('body');
+
+// append elements to body as children
+body.appendChild(divCurrentRound);
+body.appendChild(divPlayerChoice);
+body.appendChild(divComputerChoice);
+body.appendChild(divWinnerAnnouncement);
+body.appendChild(divPlayerScore);
+body.appendChild(divComputerScore);
+
+// change text in appended nodes
+divCurrentRound.textContent = `Round ${currentRound}`;
+divPlayerChoice.textContent = '';
+divComputerChoice.textContent = '';
+divPlayerScore.textContent = 'Player score: 0';
+divComputerScore.textContent = 'Computer score: 0';
