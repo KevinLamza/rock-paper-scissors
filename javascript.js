@@ -55,17 +55,7 @@ function getComputerChoice() {
 
 // init function getPlayerChoice
 function getPlayerChoice(playerChoice) {
-    // // declare variable for playerChoice
-    // let playerChoice;
-
-    // // ask player for choice
-    // // assign string to playerChoice
-    // playerChoice = prompt("Please enter Rock, Paper or Scissors:", "Rock");
-
-    // // change string into lowercase only
-    // playerChoice = playerChoice.toLowerCase();
-
-    // return playerChoice
+     // return playerChoice
     if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
         if (playerChoice === "rock") {
             console.log("You chose Rock!");
@@ -152,29 +142,6 @@ function playSingleRound (playerChoice,computerChoice) {
         // return string with winning announcement
         return winnerAnnouncement;
 }
-
-// // init function game 
-// function game() {
-//     // for loop 5 mal
-//     for (let i = 0; i < totalRounds; i++) {
-//         // get all the choices and play a single round
-//         winnerAnnouncement = playSingleRound(getPlayerChoice(),getComputerChoice());
-
-//         // print string for winner of current round and current score
-//         console.log(`Round ${i+1}: ${winnerAnnouncement}`);
-//         console.log(`You have ${playerScore} points and the computer has ${computerScore} points!`);
-//     }
-// }
-
-// // game()
-// game();
-// if (playerScore > computerScore) {
-//     console.log("You won the game!")
-// } else if (playerScore < computerScore) {
-//     console.log("You lost the game!")
-// } else if (playerScore === computerScore) {
-//     console.log("Well look at that, it's a tie!")
-// }
 
 const btnRock = document.querySelector('#btn-rock');
 btnRock.addEventListener('click', () => {
